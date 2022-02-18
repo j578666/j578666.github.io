@@ -1,0 +1,162 @@
+<! DOCTYPE html> 
+<head>
+<link rel="stylesheet" href="styles.css "  >
+<!--- For Font --->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
+
+
+
+</head>
+
+<body>
+
+<div class="top_nav black_background">  
+	<a href="#" class="nav"> Home</a>
+	<a href="pageNotFound.html" class="nav">Explore</a>
+	<a href="pageNotFound.html" class="nav">Contact</a>
+</div>
+
+<div class = "cropped ">
+	<img src="rodeo-drive.jpg"  width="1520" height="1010">
+	<div class="rodeo_text">LA - The City of Angeles</div>
+</div>
+
+<div class = "section2 grey_background" >
+	<div class="sec2 sec2_pad black_background"> 
+		<img id=sec2_img1  width="300" height="200">
+		<h5>Griffin Observatory </h5>
+		<p class = "sec2text" id = sec2_text1></p>
+	</div>
+
+	<div class="sec2 black_background"> 
+		 
+		<img  id=sec2_img2 width="300" height="200">
+		<h5>Mountains</h5>
+		<p class = "sec2text" id=sec2_text2> </p>
+	</div>
+
+	<div class="sec2 black_background"> 
+		<img id =sec2_img3  width="300" height="200">
+		<h5>Universal Studios</h5>
+		<p class = "sec2text" id=sec2_text3></p>
+	</div>
+</div>
+
+<div class ="section3 black_background">
+	<div class ="sec3 sec31"> 
+		<p id= sec3_text1> </p>
+		<p id =sec3_text2> </p>
+
+	</div>
+	<div class = "sec3 sec32">
+		<img src="lasky.png"  width="500" height="290">
+
+	</div>
+</div>
+
+
+<div class = "section4 grey_background" > 
+	<div class ="sec4 sec4topPadding"> 
+		<div class = "sec4 sec4img sec4padding sec4rightPadding"> 
+			<img id=sec4_img1  width="335" height="220">
+		</div>
+
+		<div class = "sec4 sec4text"> 
+			<h2 id=sec4_heading1></h2>
+			<p id = sec4_text1> </p>
+
+		</div>
+
+	</div>
+	
+	<div class ="sec4 sec42topPadding"> 
+
+		<div class = "sec4 sec4text sec4padding sec4rightPadding"> 
+			<h2 id = sec4_heading2 class =  "right">Beaches</h2>
+			<p id=sec4_text2> </p>
+
+		</div>
+
+		<div class = "sec4 sec4img"> 
+			<img id=sec4_img2  width="335" height="220">
+
+		</div>
+	</div>
+</div>
+
+<footer class = "section5 black_background"> 
+	<div class="sec5 sec51"> 
+		<p> Tip the world over on its side and everything loose will land in Los Angeles.</p>
+
+		<h4>- Frank Lloyd Wright</h4>
+
+
+	</div>
+	
+	<div class="sec5 sec52"> 
+		<h3>Designed By</h3>
+		<h5>Kuan-Ying Wang</h5>
+		<a href="mailto: wangkuan@usc.edu"> wangkuan@usc.edu </a>
+		<a href="tel:+1650-476-4556">(+1)650 476 4556</a>
+
+	</div>
+
+</footer>
+
+
+
+   <script type="text/javascript" charset="utf-8">
+
+        fetch('data.json')
+            .then(function (response) {
+                return response.json();
+            }).then(function (apiJsonData) {
+                console.log(apiJsonData);
+                renderDataInTheTable(apiJsonData)
+            })
+
+
+        function renderDataInTheTable(data) {
+            //load and set image src 
+            document.getElementById('sec2_img1').src = Object.values(data)[0][0].image;
+			document.getElementById('sec2_img2').src = Object.values(data)[0][1].image;
+			document.getElementById('sec2_img3').src = Object.values(data)[0][2].image;
+
+			//load and set img description
+            document.getElementById('sec2_text1').innerHTML =Object.values(data)[0][0].text;
+            document.getElementById('sec2_text2').innerHTML =Object.values(data)[0][1].text;
+            document.getElementById('sec2_text3').innerHTML =Object.values(data)[0][2].text;
+
+            //section 3 
+            document.getElementById('sec3_text1').innerHTML = Object.values(data)[1].text[0];
+            document.getElementById('sec3_text2').innerHTML = Object.values(data)[1].text[1];
+
+            //section 4 
+            document.getElementById('sec4_img1').src = Object.values(data)[2][0].image;
+            document.getElementById('sec4_img2').src = Object.values(data)[2][1].image;
+
+            document.getElementById('sec4_heading1').innerHTML =Object.values(data)[2][0].heading;
+            document.getElementById('sec4_heading2').innerHTML =Object.values(data)[2][1].heading;
+
+            document.getElementById('sec4_text1').innerHTML =Object.values(data)[2][0].text;
+            document.getElementById('sec4_text2').innerHTML =Object.values(data)[2][1].text;
+	}
+        
+    </script>
+
+</body> 
+
+
+
+
+
+
+
+
+
+
+
+
+
