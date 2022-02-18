@@ -26,20 +26,20 @@
 <div class = "section2 grey_background" >
 	<div class="sec2 sec2_pad black_background"> 
 		<img id=sec2_img1  width="300" height="200">
-		<h5>Griffin Observatory </h5>
+		<h5 id=sec2_heading1 ></h5>
 		<p class = "sec2text" id = sec2_text1></p>
 	</div>
 
 	<div class="sec2 black_background"> 
 		 
 		<img  id=sec2_img2 width="300" height="200">
-		<h5>Mountains</h5>
+		<h5 id=sec2_heading2 ></h5>
 		<p class = "sec2text" id=sec2_text2> </p>
 	</div>
 
 	<div class="sec2 black_background"> 
 		<img id =sec2_img3  width="300" height="200">
-		<h5>Universal Studios</h5>
+		<h5 id=sec2_heading3 ></h5>
 		<p class = "sec2text" id=sec2_text3></p>
 	</div>
 </div>
@@ -113,7 +113,7 @@
             .then(function (response) {
                 return response.json();
             }).then(function (apiJsonData) {
-                console.log(apiJsonData);
+                //console.log(apiJsonData);
                 renderDataInTheTable(apiJsonData)
             })
 
@@ -123,6 +123,11 @@
             document.getElementById('sec2_img1').src = Object.values(data)[0][0].image;
 			document.getElementById('sec2_img2').src = Object.values(data)[0][1].image;
 			document.getElementById('sec2_img3').src = Object.values(data)[0][2].image;
+
+			//section 2 heading
+			document.getElementById('sec2_heading1').innerHTML =Object.values(data)[0][0].heading;
+            document.getElementById('sec2_heading2').innerHTML =Object.values(data)[0][1].heading;
+            document.getElementById('sec2_heading3').innerHTML =Object.values(data)[0][2].heading;
 
 			//load and set img description
             document.getElementById('sec2_text1').innerHTML =Object.values(data)[0][0].text;
@@ -147,16 +152,3 @@
     </script>
 
 </body> 
-
-
-
-
-
-
-
-
-
-
-
-
-
