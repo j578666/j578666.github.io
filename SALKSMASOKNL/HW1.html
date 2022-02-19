@@ -23,68 +23,23 @@
 	<div class="rodeo_text">LA - The City of Angeles</div>
 </div>
 
-<div class = "section2 grey_background" >
-	<div class="sec2 sec2_pad black_background"> 
-		<img id=sec2_img1  width="300" height="200">
-		<h5 id=sec2_heading1 ></h5>
-		<p class = "sec2text" id = sec2_text1></p>
-	</div>
+<div class = "section2 grey_background" id=section2> </div>
 
-	<div class="sec2 black_background"> 
-		 
-		<img  id=sec2_img2 width="300" height="200">
-		<h5 id=sec2_heading2 ></h5>
-		<p class = "sec2text" id=sec2_text2> </p>
-	</div>
-
-	<div class="sec2 black_background"> 
-		<img id =sec2_img3  width="300" height="200">
-		<h5 id=sec2_heading3 ></h5>
-		<p class = "sec2text" id=sec2_text3></p>
-	</div>
-</div>
 
 <div class ="section3 black_background">
-	<div class ="sec3 sec31"> 
-		<p id= sec3_text1> </p>
-		<p id =sec3_text2> </p>
-
-	</div>
+	<div class ="sec3 sec31" id=section3> </div>
 	<div class = "sec3 sec32">
 		<img src="lasky.png"  width="500" height="290">
-
 	</div>
+</div> 
+
+
+<div class = "section4 grey_background"  > 
+	<div class = "sec4top_pad" id=section4  > 
+	</div>
+
 </div>
 
-
-<div class = "section4 grey_background" > 
-	<div class ="sec4 sec4topPadding"> 
-		<div class = "sec4 sec4img sec4padding sec4rightPadding"> 
-			<img id=sec4_img1  width="335" height="220">
-		</div>
-
-		<div class = "sec4 sec4text"> 
-			<h2 id=sec4_heading1></h2>
-			<p id = sec4_text1> </p>
-
-		</div>
-
-	</div>
-	
-	<div class ="sec4 sec42topPadding"> 
-
-		<div class = "sec4 sec4text sec4padding sec4rightPadding"> 
-			<h2 id = sec4_heading2 class =  "right"></h2>
-			<p id=sec4_text2> </p>
-
-		</div>
-
-		<div class = "sec4 sec4img"> 
-			<img id=sec4_img2  width="335" height="220">
-
-		</div>
-	</div>
-</div>
 
 <footer class = "section5 black_background"> 
 	<div class="sec5 sec51"> 
@@ -114,40 +69,83 @@
                 return response.json();
             }).then(function (apiJsonData) {
                 //console.log(apiJsonData);
-                renderDataInTheTable(apiJsonData)
+                renderData(apiJsonData)
             })
 
 
-        function renderDataInTheTable(data) {
-            //load and set image src 
-            document.getElementById('sec2_img1').src = Object.values(data)[0][0].image;
-			document.getElementById('sec2_img2').src = Object.values(data)[0][1].image;
-			document.getElementById('sec2_img3').src = Object.values(data)[0][2].image;
+        function renderData(data) {
 
-			//section 2 heading
-			document.getElementById('sec2_heading1').innerHTML =Object.values(data)[0][0].heading;
-            document.getElementById('sec2_heading2').innerHTML =Object.values(data)[0][1].heading;
-            document.getElementById('sec2_heading3').innerHTML =Object.values(data)[0][2].heading;
+        	//section 2 
+        	let sec2=  data["section2"]; 
+        	for(let i=0; i< data["section2"].length; i++){
 
-			//load and set img description
-            document.getElementById('sec2_text1').innerHTML =Object.values(data)[0][0].text;
-            document.getElementById('sec2_text2').innerHTML =Object.values(data)[0][1].text;
-            document.getElementById('sec2_text3').innerHTML =Object.values(data)[0][2].text;
+        		var div = document.createElement("div");
+        		div.className="sec2 black_background";
 
-            //section 3 
-            document.getElementById('sec3_text1').innerHTML = Object.values(data)[1].text[0];
-            document.getElementById('sec3_text2').innerHTML = Object.values(data)[1].text[1];
+        		var img = document.createElement("img");
+        		img.src = sec2[i].image;
+        		div.appendChild(img);
 
-            //section 4 
-            document.getElementById('sec4_img1').src = Object.values(data)[2][0].image;
-            document.getElementById('sec4_img2').src = Object.values(data)[2][1].image;
+        		var title = document.createElement("h5");
+        		title.innerHTML = sec2[i].heading;
+        		div.appendChild(title);
 
-            document.getElementById('sec4_heading1').innerHTML =Object.values(data)[2][0].heading;
-            document.getElementById('sec4_heading2').innerHTML =Object.values(data)[2][1].heading;
+        		var para = document.createElement("p");
+        		para.innerHTML = sec2[i].text;
+        		
+        		div.appendChild(para);
+        		document.getElementById("section2").appendChild(div);
+        	}
 
-            document.getElementById('sec4_text1').innerHTML =Object.values(data)[2][0].text;
-            document.getElementById('sec4_text2').innerHTML =Object.values(data)[2][1].text;
-	}
+      
+
+        	//section 3 
+        	let sec3 = data["section3"].text;
+        	for(let i=0; i< sec3.length; i++){
+        		var para = document.createElement("p");
+        		para.innerHTML = sec3[i];
+        		document.getElementById("section3").appendChild(para);
+
+        	}
+
+
+
+            //section 4
+            let sec4=  data["section4"]; 
+            for(let i=0; i< data["section4"].length; i++){
+
+            	var mydiv = document.createElement("div");
+            	var img_div = document.createElement("div");
+        		img_div.className="sec4 ";
+        		var text_div = document.createElement("div");
+        		text_div.className="sec4 sec4text";
+
+        		var img = document.createElement("img");
+        		img.src = sec4[i].image;
+        		img_div.appendChild(img);
+
+        		var title = document.createElement("h2");
+        		title.innerHTML = sec4[i].heading;
+        		text_div.appendChild(title);
+
+        		var para = document.createElement("p");
+        		para.innerHTML = sec4[i].text;
+        		text_div.appendChild(para);
+
+        		if(i%2.0 ==0){ //imgage then text
+	        		mydiv.appendChild(img_div);
+	        		mydiv.appendChild(text_div);
+	        		mydiv.className="sec4_block left";
+
+        		}else{  //text then image	
+	        		mydiv.appendChild(text_div);
+	        		mydiv.appendChild(img_div);
+	        		mydiv.className="sec4_block right";
+	        		
+        		}
+        		document.getElementById("section4").appendChild(mydiv);
+        	}
+		}
         
     </script>
 
