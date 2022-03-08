@@ -1,0 +1,89 @@
+body {
+	width:1600px;
+	height:800px;
+	background:#b5ddf6;
+}
+
+.title{
+	color:#A80707;
+	text-align:center;
+}
+
+.title h1{
+	font-size: 40px;
+
+}
+
+.title p{
+	font-size:30px;
+}
+
+.form {
+	text-align:center;
+	font-size:25px;
+}
+
+.form label{
+	font-weight:bold;
+	text-align:center;
+	font-size:25px;
+
+
+}
+
+.form input{
+	text-align:left;
+	width:220px;
+	height:25px;
+}
+
+.form span{
+	color:red;
+	font-weight: bold;
+}
+.submit input{
+	width:120px;
+	height:35px;
+	padding:5px;
+	font-size:20px;
+	text-align:center;
+	background: #475BC1;
+	color:white;
+
+}
+.submit{
+
+
+}
+
+.entry{
+	margin:25px auto;
+	width: 330px;
+	text-align:right;
+	padding-right:80px;
+
+}
+
+.output{
+    height:50px;
+}
+
+
+.output p{
+    font-size:20px;
+    font-weight:bold;
+}
+
+.image{
+    text-align:center;
+}
+.image img{
+    width:600px;
+    height:400px;
+    border: solid 2px;
+
+
+
+
+}
+
